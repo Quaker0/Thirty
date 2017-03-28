@@ -25,19 +25,27 @@ public class GameActivity extends AppCompatActivity {
     private static final String KEY_THROWS = "throws";
     private static final String KEY_COLORS = "colors";
     private final CalculateHelper calc = new CalculateHelper(this,model);
+    private Button throwButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thirty);
-
+        throwButton = (Button) findViewById(R.id.throw_button);
         //Press throw button
-        findViewById(R.id.throw_button).setOnClickListener(new View.OnClickListener() {
+        throwButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 throwButton();
             }
         });
+
+        model.setDice1 ((ImageView) findViewById(R.id.dice1));
+        model.setDice2 ((ImageView)  findViewById(R.id.dice2));
+        model.setDice3 ((ImageView)  findViewById(R.id.dice3));
+        model.setDice4 ((ImageView)  findViewById(R.id.dice4));
+        model.setDice5 ((ImageView)  findViewById(R.id.dice5));
+        model.setDice6 ((ImageView)  findViewById(R.id.dice6));
 
         //Select dices
         final ImageView[] dices = model.getDices();
@@ -53,13 +61,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             });
         }
-
-        model.setDice1 ((ImageView) findViewById(R.id.dice1));
-        model.setDice2 ((ImageView)  findViewById(R.id.dice2));
-        model.setDice3 ((ImageView)  findViewById(R.id.dice3));
-        model.setDice4 ((ImageView)  findViewById(R.id.dice4));
-        model.setDice5 ((ImageView)  findViewById(R.id.dice5));
-        model.setDice6 ((ImageView)  findViewById(R.id.dice6));
 
         Spinner dropdown = (Spinner)findViewById(R.id.number_spinner);
         String[] items = model.SPINNER_ITEMS;
@@ -125,7 +126,7 @@ public class GameActivity extends AppCompatActivity {
         } else if (model.getThrowCount() > 3){
             showResults(calc.calculateResult());
             String throwBtnText = getThrowButtonTextStd();
-            model.getThrowButton().setText(throwBtnText);
+            throwButton.setText(throwBtnText);
             model.resetThrowCount();
             resetDices();
         }
@@ -148,18 +149,16 @@ public class GameActivity extends AppCompatActivity {
      * @param text
      */
     public void setThrowButtonText(String text) {
-        Button button = (Button) findViewById(R.id.throw_button);
-        button.setText(text);
-        button.setHighlightColor(Color.GREEN);
+        throwButton.setText(text);
+        throwButton.setHighlightColor(Color.GREEN);
     }
 
     /**
      * Set the standard text for the Throw-button.
      */
     public void setThrowButtonText() {
-        Button button = (Button) findViewById(R.id.throw_button);
-        button.setText(getThrowButtonTextStd());
-        button.setHighlightColor(Color.GREEN);
+        throwButton.setText(getThrowButtonTextStd());
+        throwButton.setHighlightColor(Color.GREEN);
     }
 
     /**

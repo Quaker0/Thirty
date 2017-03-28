@@ -28,7 +28,6 @@ public class Model{
                                             1,1,1};
     private String[] mDiceColors = new String[]    {WHITE_DICE,WHITE_DICE,WHITE_DICE,
                                                     WHITE_DICE,WHITE_DICE,WHITE_DICE};
-    private Button mThrowButton;
     final static String[] SPINNER_ITEMS = new String[]{"Low", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 
     /**
@@ -208,22 +207,6 @@ public class Model{
         this.mThrowCount = 0;
     }
 
-
-    /**
-     * Get throw button
-     * @return
-     */
-    public Button getThrowButton() {
-        return mThrowButton;
-    }
-
-    /**
-     * Set throw button
-     * @param throwButton
-     */
-    public void setThrowButton(Button throwButton) {
-        mThrowButton = throwButton;
-    }
 
     /**
      * Get pointers to all dices

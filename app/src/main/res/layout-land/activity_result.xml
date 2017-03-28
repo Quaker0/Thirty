@@ -22,7 +22,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="243dp"
         android:orientation="vertical">
 
         <ProgressBar
@@ -33,17 +33,21 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:id="@+id/progressBar"
-            android:max="3"
+            android:max="10"
             android:visibility="visible"
             android:indeterminate="false"
             tools:visibility="visible"/>
 
-        <TableLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        <TableLayout
+            android:layout_width="300dp"
+            android:layout_height="220dp"
             android:gravity="bottom|center_horizontal"
             android:layout_marginBottom="10dp"
-            android:layout_above="@+id/continue_button"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:orientation="vertical">
@@ -60,10 +64,11 @@
                     android:text="Round 1: "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@android:color/black"/>
+
                 <TextView
-                    android:text="@string/result1"
+                    android:text="Result1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/result1"
@@ -84,8 +89,7 @@
                     android:text="Round 2: "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@android:color/black"/>
 
                 <TextView
@@ -111,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView2"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textColor="@android:color/black"/>
 
                 <TextView
@@ -123,6 +127,57 @@
                     android:paddingLeft="15dp"
                     android:textColor="@android:color/holo_blue_dark"/>
             </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/result_row4">
+
+                <TextView
+                    android:text="Round 4: "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:text="Result4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/result4"
+                    android:textSize="20sp"
+                    android:paddingLeft="15dp"
+                    android:textColor="@android:color/holo_blue_dark"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/result_row5">
+
+                <TextView
+                    android:text="Round 5: "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:text="Result5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/result5"
+                    android:textSize="20sp"
+                    android:paddingLeft="15dp"
+                    android:textColor="@android:color/holo_blue_dark"/>
+            </TableRow>
+        </TableLayout>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -150,7 +205,142 @@
                     android:paddingLeft="15dp"/>
             </TableRow>
 
-        </TableLayout>
+            <TableLayout
+                android:layout_width="300dp"
+                android:layout_height="220dp"
+                android:gravity="bottom|center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/result_row6">
+
+                    <TextView
+                        android:text="Round 6: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:text="Result6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/result6"
+                        android:textSize="20sp"
+                        android:paddingLeft="15dp"
+                        android:textColor="@android:color/holo_blue_dark"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/result_row7">
+
+                    <TextView
+                        android:text="Round 7: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:text="Result7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/result7"
+                        android:textSize="20sp"
+                        android:paddingLeft="15dp"
+                        android:textColor="@android:color/holo_blue_dark"/>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/result_row8">
+
+                    <TextView
+                        android:text="Round 8: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:text="Result8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/result8"
+                        android:textSize="20sp"
+                        android:paddingLeft="15dp"
+                        android:textColor="@android:color/holo_blue_dark"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/result_row9">
+
+                    <TextView
+                        android:text="Round 9: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:text="Result9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/result9"
+                        android:textSize="20sp"
+                        android:paddingLeft="15dp"
+                        android:textColor="@android:color/holo_blue_dark"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/result_row10">
+
+                    <TextView
+                        android:text="Round 10:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:text="Result10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/result10"
+                        android:textSize="20sp"
+                        android:paddingLeft="15dp"
+                        android:textColor="@android:color/holo_blue_dark"/>
+                </TableRow>
+            </TableLayout>
+
+        </RelativeLayout>
     </LinearLayout>
 
 </FrameLayout>
