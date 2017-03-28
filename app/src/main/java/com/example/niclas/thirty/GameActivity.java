@@ -13,6 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * VieWerActivity communicates with strings.xml and drawable directory as well as Views.
@@ -26,12 +29,20 @@ public class GameActivity extends AppCompatActivity {
     private static final String KEY_COLORS = "colors";
     private final CalculateHelper calc = new CalculateHelper(this,model);
     private Button throwButton;
+    Spinner mySpinner;
+    ArrayAdapter<String> spinnerAdapter;
+    List<String> localList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thirty);
         throwButton = (Button) findViewById(R.id.throw_button);
+        mySpinner = (Spinner) findViewById(R.id.number_spinner);
+        localList = new LinkedList<String>(Arrays.asList(model.SPINNER_ITEMS));
+        spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, localList);
+        mySpinner.setAdapter(spinnerAdapter);
+
         //Press throw button
         throwButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,20 +51,20 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        model.setDice1 ((ImageView) findViewById(R.id.dice1));
-        model.setDice2 ((ImageView)  findViewById(R.id.dice2));
-        model.setDice3 ((ImageView)  findViewById(R.id.dice3));
-        model.setDice4 ((ImageView)  findViewById(R.id.dice4));
-        model.setDice5 ((ImageView)  findViewById(R.id.dice5));
-        model.setDice6 ((ImageView)  findViewById(R.id.dice6));
+        model.setDice1((ImageView) findViewById(R.id.dice1));
+        model.setDice2((ImageView) findViewById(R.id.dice2));
+        model.setDice3((ImageView) findViewById(R.id.dice3));
+        model.setDice4((ImageView) findViewById(R.id.dice4));
+        model.setDice5((ImageView) findViewById(R.id.dice5));
+        model.setDice6((ImageView) findViewById(R.id.dice6));
 
         //Select dices
         final ImageView[] dices = model.getDices();
-        for (int i=0;i<dices.length;i++) {
+        for (int i = 0; i < dices.length; i++) {
             final int j = i;
             dices[j].setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    if(model.getThrowCount()>0) {
+                    if (model.getThrowCount() > 0) {
                         model.reverseDiceColor(j);
                         int oldRes = model.getDiceResult(j);
                         selectDice(dices[j].getId(), model.getDiceColor(j) + oldRes);
@@ -62,13 +73,9 @@ public class GameActivity extends AppCompatActivity {
             });
         }
 
-        Spinner dropdown = (Spinner)findViewById(R.id.number_spinner);
-        String[] items = model.SPINNER_ITEMS;
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
-        dropdown.setAdapter(adapter);
 
         if (savedInstanceState != null) {
-            int throwCount = savedInstanceState.getInt(KEY_THROWS,0);
+            int throwCount = savedInstanceState.getInt(KEY_THROWS, 0);
             int[] diceResults = savedInstanceState.getIntArray(KEY_DICES);
             ArrayList<Integer> results = savedInstanceState.getIntegerArrayList(KEY_RESULT);
             String[] colors = savedInstanceState.getStringArray(KEY_COLORS);
@@ -81,6 +88,16 @@ public class GameActivity extends AppCompatActivity {
         } else {
             setInstruction("Begin by throwing the dices!");
         }
+    }
+
+    private void updateSpinnerItem() {
+        if(localList.size()>0) {
+            Log.d("Removed from spinner", localList.remove((int) mySpinner.getSelectedItemId()));
+        }   else {
+            Log.d("Spinner","reset");
+            localList = new LinkedList<String>(Arrays.asList(model.SPINNER_ITEMS));
+        }
+        spinnerAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -129,6 +146,7 @@ public class GameActivity extends AppCompatActivity {
             throwButton.setText(throwBtnText);
             model.resetThrowCount();
             resetDices();
+            updateSpinnerItem();
         }
         setInstruction();
     }
@@ -212,7 +230,6 @@ public class GameActivity extends AppCompatActivity {
      * @return
      */
     public String getSpinnerValue() {
-        Spinner mySpinner = (Spinner) findViewById(R.id.number_spinner);
         return mySpinner.getSelectedItem().toString();
     }
 

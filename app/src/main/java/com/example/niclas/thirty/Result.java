@@ -17,7 +17,7 @@ import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 /**
- * Seperate window that shows results
+ * Separate window that shows results
  */
 public class Result extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class Result extends AppCompatActivity {
 
         TableRow resRowTot = (TableRow) findViewById(R.id.result_row);
         resRowTot.setVisibility(INVISIBLE);
-        
+
         ArrayList<TextView> results = new ArrayList<TextView>();
         results.add((TextView) findViewById(R.id.result1));
         results.add((TextView) findViewById(R.id.result2));
@@ -77,30 +77,7 @@ public class Result extends AppCompatActivity {
                 }
             }
         }
-/*
-        if(value != null && value.size() > 0) {
-            Log.d("Res: ",String.valueOf(value.get(0)));
-            res1.setText(String.valueOf(value.get(0)));
-        }
-        if(value != null && value.size() < 2) {
-            resRow2.setVisibility(INVISIBLE);
-            resRow3.setVisibility(INVISIBLE);
-            resRowTot.setVisibility(INVISIBLE);
-            mProgress.setProgress(1);
-        } else if(value != null && value.size() < 3) {
-            res2.setText(String.valueOf(value.get(1)));
-            resRow3.setVisibility(INVISIBLE);
-            mProgress.setProgress(2);
-        } else if (value != null){
-            res2.setText(String.valueOf(value.get(1)));
-            res3.setText(String.valueOf(value.get(2)));
-            resTot.setText(String.valueOf(value.get(0)+value.get(1)+value.get(2)));
-            resRow2.setVisibility(VISIBLE);
-            resRow3.setVisibility(VISIBLE);
-            resRowTot.setVisibility(VISIBLE);
-            mProgress.setProgress(3);
-        }
-*/
+
         // Close window
         conButton.setOnClickListener(new View.OnClickListener() {
             @Override

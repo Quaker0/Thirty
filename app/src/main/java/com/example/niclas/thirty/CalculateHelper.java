@@ -41,9 +41,9 @@ public class CalculateHelper {
             model.resetAllResults();
         }
 
+        int res=0;
         switch(spinner) {
             case "Low":
-                int res = 0;
                 for (int d:dices) {
                     if(d<4) {
                         res += d;
@@ -53,25 +53,16 @@ public class CalculateHelper {
                 break;
             default:
                 Log.d("Spinner",spinner);
-                int result = calcResult( Integer.parseInt(spinner), model.arrayToList(dices) );
-                Log.d("Result",result+"");
-                model.addTurnResult(result);
+                res = calcResult( Integer.parseInt(spinner), model.arrayToList(dices) );
+                Log.d("Result",res+"");
+                model.addTurnResult(res);
         }
-        model.addResult(add(model.getTurnResults()));
+        model.addResult(res);
         Log.d("Results: ",model.getResults().toString());
         return model.getResults();
     }
 
-
-
-    private int add(ArrayList<Integer> arr) {
-        int res = 0;
-        for (int i : arr) {
-            res+=i;
-        }
-        return res;
-    }
-
+    
     /**
      * Calculate the result of dices thrown according to Thirty rules.
      * Count multiples of &val and count total
