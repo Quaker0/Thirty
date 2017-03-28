@@ -43,7 +43,8 @@ public class Result extends AppCompatActivity {
         rows.add((TableRow) findViewById(R.id.result_row10));
 
         TableRow resRowTot = (TableRow) findViewById(R.id.result_row);
-
+        resRowTot.setVisibility(INVISIBLE);
+        
         ArrayList<TextView> results = new ArrayList<TextView>();
         results.add((TextView) findViewById(R.id.result1));
         results.add((TextView) findViewById(R.id.result2));
@@ -59,19 +60,20 @@ public class Result extends AppCompatActivity {
         TextView resTot = (TextView) findViewById(R.id.result);
         ProgressBar mProgress = (ProgressBar) findViewById(R.id.progressBar);
 
-
         // Show the same amount of rows as their are results.
 
         if(value!=null) {
             for (int i = 0; i < 10; i++) {
                 if (value.size() > i && value.get(i) != null) {
-                    results.get(i).setText(value.get(i));
+                    Log.d("res value",String.valueOf(value.get(i)));
+                    results.get(i).setText(String.valueOf(value.get(i)));
                     mProgress.setProgress(i+1);
                     if (i == 9) { //All values
-                        resTot.setText(add(value));
+                        resRowTot.setVisibility(VISIBLE);
+                        resTot.setText(String.valueOf(add(value)));
                     }
                 } else {
-                    rows.get(i).setVisibility(INVISIBLE);
+                    rows.get(i-1).setVisibility(INVISIBLE);
                 }
             }
         }
